@@ -30,6 +30,12 @@ Text Domain: twentytwenty-child
   text-decoration: none;
   border-radius: 10px;
   padding: 4rem;
+  max-width: 100%;
+}
+.product-shortcode {
+  display: block;
+  width: 400px;
+  margin: 0 auto;
 }
 .product__title {
   color: black;

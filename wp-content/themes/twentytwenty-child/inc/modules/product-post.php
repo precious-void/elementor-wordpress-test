@@ -5,6 +5,7 @@ namespace TwentyTwentyChild\Modules;
 use TwentyTwentyChild\Modules\Product_Taxanomy;
 use TwentyTwentyChild\Admin\Metaboxes\Gallery as Gallery_Meta_Box;
 use TwentyTwentyChild\Admin\Metaboxes\Settings as Settings_Meta_Box;
+use TwentyTwentyChild\Modules\Product_Shortcode;
 
 class Product_Post
 {
@@ -13,6 +14,7 @@ class Product_Post
     public function __construct()
     {
         new Product_Taxanomy();
+        new Product_Shortcode();
 
         add_action('init', [$this, 'create_cpt']);
         $this->add_meta_boxes();

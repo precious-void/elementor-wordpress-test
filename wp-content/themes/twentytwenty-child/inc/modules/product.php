@@ -6,18 +6,47 @@ use WP_Post;
 
 class Product
 {
+    /**
+     * Product price
+     * @var int
+     */
     private $price = 0;
+    /**
+     * Product price
+     * @var int
+     */
     private $sale_price = 0;
 
+    /**
+     * Gallery images
+     * @var array[WP_Attachment]
+     */
     private $gallery = [];
 
+    /**
+     * Is product on sale
+     * @var bool
+     */
     private $on_sale = false;
+
+    /**
+     * Youtube link
+     * @var youtube_link
+     */
     private $youtube_link = '';
 
 
+    /**
+     * Post ID
+     * @var int
+     */
     protected $id = 0;
+
+    /**
+     * Post Object
+     * @var null|WP_Post
+     */
     protected $post = null;
-    protected $data = [];
 
     public function __construct($args)
     {
@@ -60,6 +89,11 @@ class Product
         }
 
         return [];
+    }
+
+    public function get_id()
+    {
+        return $this->id;
     }
 
     public function get_price()

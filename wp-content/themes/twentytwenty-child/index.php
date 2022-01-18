@@ -77,6 +77,8 @@ get_header();
     <?php
     }
 
+    test_product_shortcode();
+
     if (have_posts()) {
         get_template_part('template-parts/content-products');
     } elseif (is_search()) {
