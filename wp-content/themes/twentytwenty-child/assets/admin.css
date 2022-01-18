@@ -1,0 +1,102 @@
+.add_product_images {
+  padding: 0 12px 12px;
+}
+
+#product_images_container {
+  padding: 0 0 0 9px;
+}
+
+#product_images_container ul {
+  margin: 0;
+  padding: 0;
+}
+
+#product_images_container ul li.image,
+li.add,
+li.wc-metabox-sortable-placeholder {
+  width: 80px;
+  float: left;
+  cursor: move;
+  border: 1px solid #d5d5d5;
+  margin: 9px 9px 0 0;
+  background: #f7f7f7;
+
+  border-radius: 2px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#product_images_container li.wc-metabox-sortable-placeholder {
+  border: 3px dashed #ddd;
+  position: relative;
+}
+
+#product_images_container ul li:hover ul.actions {
+  display: block;
+}
+
+#product_images_container ul.actions {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  padding: 2px;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #product_images_container ul.actions {
+    display: block;
+  }
+}
+#product_images_container ul.actions li {
+  float: right;
+  margin: 0 0 0 2px;
+}
+
+#product_images_container ul.actions li a {
+  width: 1em;
+  height: 1em;
+  margin: 0;
+  height: 0;
+  display: block;
+  overflow: hidden;
+}
+#product_images_container ul.actions li a.tips {
+  cursor: pointer;
+}
+
+#product_images_container ul.actions li a.delete {
+  font-size: 1.4em;
+  display: block;
+}
+
+#product_images_container ul ul.actions li a.delete::before {
+  content: "\274c";
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  font-size: 8px;
+  padding: 5px 0;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+#product_images_container .error {
+  display: none;
+  color: red;
+  font-size: 1rem;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.input-wrapper .error {
+  color: red;
+  font-size: 1rem;
+}

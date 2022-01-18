@@ -1,0 +1,184 @@
+/*
+Theme Name: twenty-twenty-child
+Description: Twenty Twenty Child Theme
+Author: Artem Shteltser
+Template: twentytwenty
+Version: 1.0.0
+Text Domain: twentytwenty-child
+*/
+
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4rem;
+}
+
+h3 {
+  color: black;
+}
+
+.products {
+  text-decoration: none;
+  position: relative;
+}
+
+.products .price {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.products .price .regular-price {
+  text-decoration: line-through;
+  font-size: 1.7rem;
+}
+
+.products .on_sale {
+  background: red;
+  display: inline-block;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  right: -5px;
+  z-index: 2;
+}
+
+.products .featured-media::before {
+  content: unset;
+}
+
+.video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  background-color: #000000;
+}
+
+.video__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video__button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: none;
+  padding: 0;
+  width: 68px;
+  height: 48px;
+  border: none;
+  background-color: transparent;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.video__button-shape {
+  fill: #212121;
+  fill-opacity: 0.8;
+}
+
+.video__button-icon {
+  fill: #ffffff;
+}
+
+.video__button:focus {
+  outline: none;
+}
+
+.video:hover .video__button-shape,
+.video__button:focus .video__button-shape {
+  fill: #ff0000;
+  fill-opacity: 1;
+}
+
+/* Enabled */
+
+.video--enabled {
+  cursor: pointer;
+}
+
+.video--enabled .video__button {
+  display: block;
+}
+
+.single-product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.single-product .product-media {
+  flex: 1;
+}
+
+.single-product .product-content {
+  flex: 2;
+  margin: 0 5rem;
+}
+
+.single-product .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+  grid-template-rows: repeat(5, minmax(50px, 1fr));
+  gap: 0px 0px;
+  grid-template-areas:
+    "main main main "
+    "main main main "
+    "main main main"
+    ". . ."
+    ". . .";
+}
+
+.single-product .main-image {
+  grid-area: main;
+}
+.single-product .gallery > div {
+  display: grid;
+  position: relative;
+}
+
+.single-product .gallery > div::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+
+.single-product .gallery > div::before,
+.single-product .gallery > div > img {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.single-product .gallery > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 1rem;
+  position: absolute;
+}
+
+@media (max-width: 1028px) {
+  .products-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .products-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

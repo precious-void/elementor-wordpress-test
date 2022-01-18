@@ -2,6 +2,19 @@
 
 namespace TwentyTwentyChild;
 
+use TwentyTwentyChild\Admin\Admin_Bar;
+use TwentyTwentyChild\Modules\Product_Post;
+
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly.
+}
+
+define('THEME__FILE__', __FILE__);
+define('THEME_SLUG', "twentytwenty-child");
+define('THEME_PLUGIN_BASE', plugin_basename(THEME__FILE__));
+define('THEME_PATH', plugin_dir_path(THEME__FILE__));
+define('THEME_ASSETS', get_stylesheet_directory_uri() . '/assets');
+
 class Theme
 {
 
@@ -10,34 +23,39 @@ class Theme
         $this->init();
     }
 
-    public function init()
+    private function init()
     {
-        $this->init_actions();
-        $this->init_filters();
+        $this->register_autoloader();
+
+        new Admin_Bar();
+        new Product_Post();
+
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_theme']);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
+        add_action('pre_get_posts', [$this, 'modify_main_query']);
     }
 
-    private function init_actions()
+    public function modify_main_query($query)
     {
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_parent_styles']);
+        if (!is_admin() && $query->is_main_query())
+            $query->set('post_type', 'products');
     }
 
-    private function init_filters()
+    private function register_autoloader()
     {
-        add_filter('show_admin_bar', [$this, 'hide_bar_for_wp_test_user']);
+        require_once THEME_PATH . '/autoloader.php';
+        Autoloader::run();
     }
 
-    public function enqueue_parent_styles()
+    public function enqueue_theme()
     {
         wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+        wp_enqueue_script('script', THEME_ASSETS . '/scripts.js', array('jquery'));
     }
 
-    public function hide_bar_for_wp_test_user()
+    public function enqueue_admin_styles()
     {
-        $user = wp_get_current_user();
-        if ($user->user_login === "wp-test") {
-            return false;
-        }
-        return true;
+        wp_enqueue_style('admin-style', THEME_ASSETS . '/admin.css');
     }
 }
 
