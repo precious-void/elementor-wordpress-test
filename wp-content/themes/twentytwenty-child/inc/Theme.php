@@ -33,6 +33,7 @@ class Theme
         add_action('wp_enqueue_scripts', [$this, 'enqueue_theme']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_admin_styles']);
         add_action('pre_get_posts', [$this, 'modify_main_query']);
+        add_action('wp_head', [$this, 'custom_color_mobile_address_bar']);
     }
 
     public function modify_main_query($query)
@@ -56,6 +57,11 @@ class Theme
     public function enqueue_admin_styles()
     {
         wp_enqueue_style('admin-style', THEME_ASSETS . '/admin.css');
+    }
+
+    public function custom_color_mobile_address_bar()
+    {
+        echo '<meta name="theme-color" content="#ff0000" />';
     }
 }
 

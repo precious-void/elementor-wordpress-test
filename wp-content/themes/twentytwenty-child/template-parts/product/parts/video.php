@@ -1,5 +1,5 @@
 <?php
-$product = $args['product'];
+$youtube_link_id = $args['youtube_link_id'];
 ?>
 <div class="video">
     <a class="video__link" href="https://youtu.be/<?php echo $youtube_link_id ?>" data-id="<?php echo $youtube_link_id ?>">

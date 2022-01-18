@@ -17,3 +17,11 @@ function test_product_shortcode()
     do_shortcode('[product id="' . $product->get_id() . '" bg_color="#eee"]');
     echo '<hr>';
 }
+
+
+add_filter("theme_product_shortcode_output", "modify_shortcode_output");
+function modify_shortcode_output($html)
+{
+    $html .= "<button>Click me</button>";
+    return $html;
+}
