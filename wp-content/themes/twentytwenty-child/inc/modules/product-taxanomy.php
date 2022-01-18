@@ -2,6 +2,9 @@
 
 namespace TwentyTwentyChild\Modules;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
 class Product_Taxanomy
 {
     public function __construct()

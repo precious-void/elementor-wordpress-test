@@ -41,7 +41,9 @@ class Autoloader
 
     private static function init_classes_map()
     {
-        self::$classes_map = [];
+        self::$classes_map = [
+            'Api' => 'api.php',
+        ];
     }
 
     private static function load_class($relative_class_name)

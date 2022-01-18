@@ -2,6 +2,10 @@
 
 namespace TwentyTwentyChild\Modules;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class Product_Shortcode
 {
     public function __construct()

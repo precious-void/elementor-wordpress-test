@@ -4,6 +4,7 @@ namespace TwentyTwentyChild;
 
 use TwentyTwentyChild\Admin\Admin_Bar;
 use TwentyTwentyChild\Modules\Product_Post;
+use TwentyTwentyChild\Api;
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
@@ -17,6 +18,7 @@ define('THEME_ASSETS', get_stylesheet_directory_uri() . '/assets');
 
 class Theme
 {
+    public $api = null;
 
     public function __construct()
     {
@@ -26,6 +28,9 @@ class Theme
     private function init()
     {
         $this->register_autoloader();
+
+        $this->api = new Api();
+        $this->api->init();
 
         new Admin_Bar();
         new Product_Post();

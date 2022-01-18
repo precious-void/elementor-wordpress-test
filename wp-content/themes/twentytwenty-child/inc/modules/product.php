@@ -2,7 +2,9 @@
 
 namespace TwentyTwentyChild\Modules;
 
-use WP_Post;
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 class Product
 {
@@ -68,7 +70,7 @@ class Product
 
     public function __construct($args)
     {
-        if ($args instanceof WP_Post) {
+        if ($args instanceof \WP_Post) {
             $this->post = $args;
             $this->id = $args->ID;
 
@@ -159,7 +161,11 @@ class Product
         $youtube_link = $this->youtube_link;
 
         if (!empty($youtube_link)) {
-            preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user|shorts)\/))([^\?&\"'>]+)/", $youtube_link, $matches);
+            preg_match(
+                "/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user|shorts)\/))([^\?&\"'>]+)/",
+                $youtube_link,
+                $matches
+            );
             $id = $matches[1];
             return $id;
         }
